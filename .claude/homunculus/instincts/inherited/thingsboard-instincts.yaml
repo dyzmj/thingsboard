@@ -1,0 +1,276 @@
+# Instincts generated from https://github.com/dyzmj/thingsboard
+# Generated: 2026-03-27T13:26:00.053Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: thingsboard-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Commit Length
+
+## Action
+
+Write moderate-length commit messages (~56 characters)
+
+## Evidence
+
+- Average commit message length: 56 chars
+- Based on 200 commits
+
+---
+id: thingsboard-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Naming Files
+
+## Action
+
+Use PascalCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: PascalCase
+
+---
+id: thingsboard-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: thingsboard-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: thingsboard-test-framework
+trigger: "when writing tests"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Test Framework
+
+## Action
+
+Use jest as the test framework
+
+## Evidence
+
+- Test framework detected: jest
+- File pattern: *.spec.ts
+
+---
+id: thingsboard-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Test Naming
+
+## Action
+
+Name test files using the pattern: *.spec.ts
+
+## Evidence
+
+- File pattern: *.spec.ts
+- Consistent across test files
+
+---
+id: thingsboard-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: **/*.test.*, **/api/**
+
+---
+id: thingsboard-workflow-merge-release-branches
+trigger: "when doing merge release branches"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Workflow Merge Release Branches
+
+## Action
+
+Follow the merge-release-branches workflow:
+1. Create a merge commit from source branch into target branch.
+2. Resolve any conflicts if necessary.
+3. Update common build files (e.g., pom.xml, build.sh, gradle files) and documentation if affected.
+4. Push the merge commit.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~8x per month
+- Files: pom.xml, application/pom.xml, build.sh
+
+---
+id: thingsboard-workflow-security-cve-fix-java-dependencies
+trigger: "when doing security cve fix java dependencies"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Workflow Security Cve Fix Java Dependencies
+
+## Action
+
+Follow the security-cve-fix-java-dependencies workflow:
+1. Identify affected dependencies (e.g., netty, jackson, Spring Boot, jedis, snakeyaml).
+2. Update the version in pom.xml (and possibly module pom.xml files).
+3. Commit with a message referencing the CVE(s).
+4. Merge into relevant branches.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: pom.xml, common/transport/transport-api/src/main/java/org/thingsboard/server/common/transport/config/ssl/SslCredentialsWebServerCustomizer.java
+
+---
+id: thingsboard-workflow-feature-or-fix-across-ui-and-backend
+trigger: "when doing feature or fix across ui and backend"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Workflow Feature Or Fix Across Ui And Backend
+
+## Action
+
+Follow the feature-or-fix-across-ui-and-backend workflow:
+1. Update or add Java backend classes (e.g., data models, DAOs, services).
+2. Update SQL schema or migration scripts if needed.
+3. Update or add Angular UI components, models, and services.
+4. Update UI assets and localization files.
+5. Update or add tests (Java and/or Angular).
+6. Update documentation/help files.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: application/src/main/java/org/thingsboard/server/**/*.java, common/data/src/main/java/org/thingsboard/server/common/data/**/*.java, dao/src/main/java/org/thingsboard/server/dao/**/*.java
+
+---
+id: thingsboard-workflow-dockerfile-improvement
+trigger: "when doing dockerfile improvement"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Workflow Dockerfile Improvement
+
+## Action
+
+Follow the dockerfile-improvement workflow:
+1. Edit Dockerfile(s) for the affected microservices.
+2. Update installation scripts or base image references.
+3. Commit with a message describing the Dockerfile change.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: msa/tb/docker-cassandra/Dockerfile, msa/tb/docker-postgres/Dockerfile
+
+---
+id: thingsboard-workflow-maven-plugin-or-build-system-upgrade
+trigger: "when doing maven plugin or build system upgrade"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/dyzmj/thingsboard
+---
+
+# Thingsboard Workflow Maven Plugin Or Build System Upgrade
+
+## Action
+
+Follow the maven-plugin-or-build-system-upgrade workflow:
+1. Identify affected Maven plugins (e.g., dockerfile-maven-plugin).
+2. Update plugin configuration in all relevant pom.xml files.
+3. Test build and packaging.
+4. Commit and document the change.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: msa/*/pom.xml, msa/transport/*/pom.xml, msa/vc-executor-docker/pom.xml
+
